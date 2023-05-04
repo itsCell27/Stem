@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Stem"
         tools:targetApi="31">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Leaderboard"
+            android:exported="false" />
+        <activity
+            android:name=".Action"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

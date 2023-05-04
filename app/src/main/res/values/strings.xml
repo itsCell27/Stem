@@ -11,9 +11,13 @@
     <string name="already">Already have an account? Login</string>
     <string name="welcomeBack">Welcome Back!</string>
     <string name="hello">hello</string>
-    <string name="doNotHave" >Dont have an account? Sign up </string>
+    <string name="doNotHave">Dont have an account? Sign up </string>
     <string name="forgotPassword">Forgot Password</string>
     <string name="enterEmail">Enter your email address:</string>
     <string name="cancel">Cancel</string>
     <string name="reset">Reset</string>
+    <string name="home">Home</string>
+    <string name="actions">Actions</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="profile">Profile</string>
 </resources>

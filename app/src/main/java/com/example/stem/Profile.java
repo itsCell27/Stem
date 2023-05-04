@@ -8,21 +8,25 @@ import android.widget.ScrollView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Home extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home1);
+        setContentView(R.layout.activity_profile);
 
-        ScrollView scrollView = findViewById(R.id.scroll_home);
-        scrollView.scrollTo(0, 0); // scroll to top
+        ScrollView scrollView = findViewById(R.id.scroll_profile);
+        scrollView.scrollTo(0, 0);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.bottom_home);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_profile);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.bottom_home:
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    finish();
                     return true;
                 case R.id.bottom_actions:
                     startActivity(new Intent(getApplicationContext(), Action.class));
@@ -35,9 +39,6 @@ public class Home extends AppCompatActivity {
                     finish();
                     return true;
                 case R.id.bottom_profile:
-                    startActivity(new Intent(getApplicationContext(), Profile.class));
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
                     return true;
             }
             return false;
