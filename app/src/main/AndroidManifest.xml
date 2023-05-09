@@ -13,26 +13,36 @@
         android:theme="@style/Theme.Stem"
         tools:targetApi="31">
         <activity
-            android:name=".Profile"
+            android:name=".Quote"
             android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Leaderboard"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Action"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Home"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Start"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

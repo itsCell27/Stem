@@ -16,5 +16,30 @@
     <style name="SlideActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+
+    </style>
+    <style name="ui_designer">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#3C3D42</item>
+    </style>
+    <style name="goode_product">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#3C3D42</item>
+    </style>
+    <style name="smallest">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="new_task">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#3C3D42</item>
+    </style>
+    <style name="view_all">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#488E00</item>
+    </style>
+    <style name="new_task1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

@@ -20,7 +20,39 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.20" />
+    <EditText
+        android:id="@+id/signup_name"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_corners"
+        android:hint="@string/name"
+        android:textColorHint="@color/black"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34"
+        android:autofillHints="name" />
+    <EditText
+        android:id="@+id/signup_username"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_corners"
+        android:hint="@string/username"
+        android:textColorHint="@color/black"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.46"
+        android:autofillHints="username" />
 
     <EditText
         android:id="@+id/signup_email"
@@ -36,7 +68,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54"
+        app:layout_constraintVertical_bias="0.58"
         android:autofillHints="email" />
 
     <EditText
@@ -54,7 +86,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66" />
+        app:layout_constraintVertical_bias="0.70" />
 
     <Button
         android:id="@+id/signup_button"

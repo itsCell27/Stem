@@ -15,7 +15,9 @@ public class Action extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
 
-        ScrollView scrollView = findViewById(R.id.scroll_action);
+        ScrollView scrollView = findViewById(R.id.scroll_action_task);
+        ScrollView scrollView1 = findViewById(R.id.scroll_action_quiz);
+        scrollView1.scrollTo(0, 0); // scroll to top
         scrollView.scrollTo(0, 0); // scroll to top
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_actions);

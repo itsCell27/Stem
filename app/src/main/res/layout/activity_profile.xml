@@ -10,7 +10,7 @@
     <ScrollView
         android:id="@+id/scroll_profile"
         android:layout_width="match_parent"
-        android:layout_height="665dp"
+        android:layout_height="675dp"
         app:layout_constraintTop_toTopOf="parent"
         android:scrollbars="vertical">
 
@@ -30,9 +30,55 @@
                 android:src="@drawable/baseline_home_24" />
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:text="Profile" />
+                android:layout_gravity="center"
+                android:background="@drawable/nofill_green_corner"
+                android:text="@string/username"
+                android:textColor="@color/green"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:layout_width="375dp"
+                android:layout_height="match_parent"
+                android:text="@string/settings"
+                android:textColor="@color/green"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+            <Button
+                android:id="@+id/logout_button_profile"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:onClick="logout" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <Button
+                android:id="@+id/deleteAccountButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_account"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:onClick="deleteAccount" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
             <!-- Add more UI elements here -->
 
@@ -42,9 +88,11 @@
     </ScrollView>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayout_action"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="69dp">
 
         <!-- Fragment container to hold the different activities -->
         <FrameLayout
