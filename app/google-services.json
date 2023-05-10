@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1027992558099",
+    "firebase_url": "https://stem2-d333f-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "stem2-d333f",
     "storage_bucket": "stem2-d333f.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1027992558099-65rp2b8s8346agq37sl5t36d7vgk522i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stem",
+            "certificate_hash": "b1e85c7a80266f88e39cb34211310aac03a285e0"
+          }
+        },
         {
           "client_id": "1027992558099-5tkh873npktn0o0cvfk6rsdgfjf92cgp.apps.googleusercontent.com",
           "client_type": 3

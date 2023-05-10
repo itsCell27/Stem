@@ -32,8 +32,14 @@
     <string name="featured_task">Featured Task</string>
     <string name="stem_quiz">Stem Quiz</string>
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
-    <string name="yes">YES</string>
+    <string name="yes">Yes</string>
     <string name="stem_task">Stem Task</string>
     <string name="name">Name</string>
-    <string name="no">NO</string>
+    <string name="no">No</string>
+    <string name="delete_account1">Delete Account?</string>
+    <string name="are_you_sure_you_want_to_delete_your_account_this_will_permanently_erase_everything_in_your_account">Are you sure you want to delete your account? This will permanently erase everything in your account.</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="level">Level</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="update_profile">Update Profile</string>
 </resources>

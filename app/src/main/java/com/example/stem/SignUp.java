@@ -24,9 +24,8 @@ public class SignUp extends AppCompatActivity {
     private EditText signupEmail, signupPassword;
     private Button signupButton;
     private TextView loginRedirectText;
-    EditText signupName, signupUsername;
-    FirebaseDatabase database;
-    DatabaseReference reference;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,6 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         auth = FirebaseAuth.getInstance();
-        signupName = findViewById(R.id.signup_name);
-        signupUsername = findViewById(R.id.signup_username);
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
         signupButton = findViewById(R.id.signup_button);
@@ -45,16 +42,13 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                database = FirebaseDatabase.getInstance();
-                reference = database.getReference("users");
 
-                String name = signupName.getText().toString();
-                String username = signupUsername.getText().toString();
+
+
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
 
-                HelperClass helperClass = new HelperClass(name, username);
-                reference.child(username).setValue(helperClass);
+
 
                 if (user.isEmpty()){
                     signupEmail.setError("Email cannot be empty");

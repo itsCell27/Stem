@@ -19,23 +19,94 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="This is a scrollable TextView" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_home_24" />
 
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/nofill_green_corner"
-                android:text="@string/username"
-                android:textColor="@color/green"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="229dp">
+
+                <TextView
+                    android:id="@+id/profile1"
+                    android:layout_width="54dp"
+                    android:layout_height="21dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="21dp"
+                    android:text="@string/profile"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:gravity="top"
+                    />
+
+                <View
+                    android:id="@+id/ellipse_1"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="52dp"
+                    android:background="@drawable/profile_picture"
+                    />
+                <TextView
+                    android:id="@+id/profile_usename"
+                    android:layout_width="175dp"
+                    android:layout_height="19dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="78dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="58dp"
+                    android:text="@string/username"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="top"
+                    />
+
+                <TextView
+                    android:id="@+id/profile_level"
+                    android:layout_width="109dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="78dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="80dp"
+                    android:text="@string/level"
+                    android:textSize="14sp"
+                    android:textColor="@color/green"
+                    android:gravity="top"
+                    android:alpha="0.8"
+                    />
+
+                <Button
+                    android:id="@+id/profile_btn_edit_profile"
+                    android:layout_width="99dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="264dp"
+                    android:layout_marginTop="57dp"
+                    android:background="@drawable/edit_profile_rectangle"
+                    android:elevation="20dp" />
+
+                <TextView
+                    android:id="@+id/text_edit_profile"
+                    android:layout_width="59dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="284dp"
+                    android:layout_marginTop="66dp"
+                    android:elevation="10dp"
+                    android:gravity="top"
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
@@ -78,7 +149,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="80dp" />
 
             <!-- Add more UI elements here -->
 

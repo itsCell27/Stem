@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/logout_text"
-            android:text="@string/logout"
+            android:text="@string/delete_account1"
             android:padding="10dp"
             android:textSize="17sp"
             android:background="@drawable/green_round"
@@ -31,45 +31,46 @@
         <TextView
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginTop="1dp"
-            android:text="@string/are_you_sure_you_want_to_logout"
-            android:textColor="@color/green"
-            android:textSize="16sp"
             android:gravity="center_horizontal"
+            android:text="@string/are_you_sure_you_want_to_delete_your_account_this_will_permanently_erase_everything_in_your_account"
+            android:textColor="@color/green"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logout_text"
             app:layout_constraintVertical_bias="0.193"
             tools:layout_editor_absoluteX="25dp" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:id="@+id/btnBack"
+            android:id="@+id/btnCancelAccount"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="10dp"
-            android:text="@string/no"
+            android:text="@string/cancel"
             android:textColor="@color/white"
-            android:textSize="14sp"
             android:textAllCaps="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/desc"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/dialogBox"
-            app:layout_constraintEnd_toStartOf="@+id/btnLogout"/>
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/desc" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:id="@+id/btnLogout"
-            android:text="@string/yes"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="40dp"
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/delete_account"
             android:textColor="@color/white"
-            android:textSize="14sp"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/dialogBox"
-            app:layout_constraintStart_toEndOf="@+id/btnBack"/>
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
