@@ -7,9 +7,6 @@ android {
     namespace 'com.example.stem'
     compileSdk 33
 
-    lintOptions{
-        disable 'NonConstantResourceId'
-    }
 
     defaultConfig {
         applicationId "com.example.stem"
@@ -30,6 +27,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
+        disable 'NonConstantResourceId'
     }
 }
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +19,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
 
@@ -27,6 +33,36 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        TextView usernameTextVew = findViewById(R.id.usernameTextView);
+
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user  = auth.getCurrentUser();
+        if (user !=null) {
+            String uid = user.getUid();
+
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+            userRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String username = snapshot.child("username").getValue(String.class);
+                        usernameTextVew.setText(username);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        } else {
+            Toast.makeText(this, "User not found.", Toast.LENGTH_SHORT).show();
+        }
+
+        TextView usernameTextView = findViewById(R.id.usernameTextView);
+
 
         logoutButton = findViewById(R.id.logout_button_profile);
         deleteAccount = findViewById(R.id.deleteAccountButton);
@@ -149,6 +185,7 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 }
