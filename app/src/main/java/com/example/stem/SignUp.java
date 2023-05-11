@@ -15,8 +15,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Random;
+import java.util.UUID;
 
 public class SignUp extends AppCompatActivity {
 
@@ -24,6 +28,14 @@ public class SignUp extends AppCompatActivity {
     private EditText signupEmail, signupPassword;
     private Button signupButton;
     private TextView loginRedirectText;
+
+
+    String generateRandomUsername() {
+        String prefix = "user";
+        // Generate a random number or unique ID
+        int randomNumber = new Random().nextInt(10000);
+        return prefix + randomNumber;
+    }
 
 
 
@@ -42,11 +54,12 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-
+                FirebaseAuth auth = FirebaseAuth.getInstance();
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
+
+
+
 
 
 
@@ -60,9 +73,30 @@ public class SignUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(SignUp.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUp.this, Login.class));
+                                FirebaseUser user = auth.getCurrentUser();
+
+                                if (user !=null) {
+                                    String uid = user.getUid();
+                                    String randomUsername = generateRandomUsername();
+
+                                    // Store the username in the Firebase Realtime Database
+                                    DatabaseReference userRef =FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+                                    userRef.child("username").setValue(randomUsername)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(SignUp.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(SignUp.this, Login.class));
+                                                    } else {
+                                                        // Failed to store the username
+                                                        Toast.makeText(SignUp.this, "Failed to store username.", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                }
                             }else {
+                                // Failed to create a new user
                                 Toast.makeText(SignUp.this, "SignUp Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -77,5 +111,6 @@ public class SignUp extends AppCompatActivity {
                 startActivity(new Intent(SignUp.this, Login.class));
             }
         });
+
     }
 }

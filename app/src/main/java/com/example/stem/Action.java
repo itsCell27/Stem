@@ -4,16 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Action extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
+
+
 
         ScrollView scrollView = findViewById(R.id.scroll_action_task);
         ScrollView scrollView1 = findViewById(R.id.scroll_action_quiz);
@@ -21,6 +27,15 @@ public class Action extends AppCompatActivity {
         scrollView.scrollTo(0, 0); // scroll to top
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_actions);
+
+        Button button = findViewById(R.id.quiz1);
+
+        button.setOnClickListener(v -> {
+            // Do something when the button is clicked
+            Intent intent = new Intent(Action.this, Quiz1.class);
+            startActivity(intent);
+        });
+
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -44,5 +59,7 @@ public class Action extends AppCompatActivity {
             }
             return false;
         });
+
+
     }
 }

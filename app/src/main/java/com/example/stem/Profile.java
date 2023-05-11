@@ -34,7 +34,12 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        TextView usernameTextVew = findViewById(R.id.usernameTextView);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        TextView usernameTextView = findViewById(R.id.usernameTextView);
+        TextView pointsTextView = findViewById(R.id.profile_stem_points);
+        int points = 10; // Replace with your actual points value
+        pointsTextView.setText(String.valueOf(points));
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -48,7 +53,7 @@ public class Profile extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         String username = snapshot.child("username").getValue(String.class);
-                        usernameTextVew.setText(username);
+                        usernameTextView.setText(username);
                     }
                 }
 
@@ -61,7 +66,6 @@ public class Profile extends AppCompatActivity {
             Toast.makeText(this, "User not found.", Toast.LENGTH_SHORT).show();
         }
 
-        TextView usernameTextView = findViewById(R.id.usernameTextView);
 
 
         logoutButton = findViewById(R.id.logout_button_profile);

@@ -42,4 +42,8 @@
     <string name="level">Level</string>
     <string name="enter_your_username">Enter your username</string>
     <string name="update_profile">Update Profile</string>
+    <string name="my_stem_points">My Stem Points:</string>
+    <string name="_0">0</string>
+    <string name="quiz_level">Quiz level</string>
+    <string name="example_quiz">Example Quiz</string>
 </resources>
