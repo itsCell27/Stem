@@ -1,40 +1,28 @@
 package com.example.stem;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ScrollView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
+
 public class Action extends AppCompatActivity {
 
-
+    private ConstraintLayout layoutTask1, layoutTask2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
 
+        layoutTask1 = findViewById(R.id.stemActionTask1);
+        layoutTask2 = findViewById(R.id.stemActionTask2);
 
-
-        ScrollView scrollView = findViewById(R.id.scroll_action_task);
-        ScrollView scrollView1 = findViewById(R.id.scroll_action_quiz);
-        scrollView1.scrollTo(0, 0); // scroll to top
-        scrollView.scrollTo(0, 0); // scroll to top
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_actions);
-
-        Button button = findViewById(R.id.quiz1);
-
-        button.setOnClickListener(v -> {
-            // Do something when the button is clicked
-            Intent intent = new Intent(Action.this, Quiz1.class);
-            startActivity(intent);
-        });
 
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -60,6 +48,14 @@ public class Action extends AppCompatActivity {
             return false;
         });
 
+        layoutTask1.setOnClickListener(v -> {
+            Intent intent = new Intent(Action.this, Task1.class);
+            startActivity(intent);
+        });
+        layoutTask2.setOnClickListener(v -> {
+            Intent intent = new Intent(Action.this, Task2.class);
+            startActivity(intent);
+        });
 
     }
 }

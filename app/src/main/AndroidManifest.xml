@@ -13,14 +13,19 @@
         android:theme="@style/Theme.Stem"
         tools:targetApi="31">
         <activity
-            android:name=".Quiz1"
+            android:name=".Task2"
+            android:exported="false" />
+        <activity
+            android:name=".Task1"
             android:exported="false" />
         <activity
             android:name=".EditProfile"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Quote"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="locked" />
         <activity
             android:name=".Profile"
             android:exported="false"

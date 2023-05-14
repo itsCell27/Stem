@@ -32,7 +32,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home" />
+                android:text="@string/home" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
             <RelativeLayout
                 android:id="@+id/text"
                 android:layout_width="322dp"
@@ -50,7 +53,7 @@
                     android:gravity="top"
                     />
                 <TextView
-                    android:id="@+id/view_all"
+                    android:id="@+id/home_view_all"
                     android:layout_width="54dp"
                     android:layout_height="21dp"
                     android:layout_alignParentStart="true"
@@ -63,129 +66,73 @@
                     />
 
             </RelativeLayout>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp"/>
 
-            <RelativeLayout
-                android:layout_width="320dp"
-                android:layout_height="70dp"
-                android:background="@drawable/white_smooth_corner"
-                android:layout_gravity="center"
-                android:elevation="69dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="250dp"
+                android:layout_height="205dp"
+                android:background="@drawable/white_box"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/stemHomeTask2">
 
-                <View
-                    android:layout_width="67dp"
-                    android:layout_height="70dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:id="@+id/home_stem_task_image2"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/climate_change3"
+                        android:contentDescription="@string/task_image" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/home_task_text_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/task_name"
+                    android:textColor="@color/green"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_stem_task_image2" />
+
+                <TextView
+                    android:id="@+id/home_stem_task_level2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/level"
+                    android:textColor="@color/shadyBlack"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/home_task_text_name2" />
+                <TextView
+                    android:id="@+id/stem_task_score2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="258dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/smooth_green_sqaure" />
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/_10"
+                    android:textSize="20sp"
+                    android:textColor="@color/green"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/home_stem_task_image2"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                <TextView
-                    android:layout_width="92dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="137dp"
-                    android:layout_marginBottom="37dp"
-                    android:text="@string/example_task"
-                    android:textAppearance="@style/ui_designer" />
-
-                <TextView
-                    android:layout_width="91dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="91dp"
-                    android:layout_marginEnd="137dp"
-                    android:layout_marginBottom="14dp"
-                    android:alpha="0.5"
-                    android:text="@string/task_type"
-                    android:textAppearance="@style/goode_product" />
-
-                <Button
-                    android:layout_width="65dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="228dp"
-                    android:layout_marginTop="17dp"
-                    android:text="@string/start"
-                    android:textColor="@color/white"
-                    android:textAppearance="@style/smallest" />
-            </RelativeLayout>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp"/>
-            <RelativeLayout
-                android:layout_width="320dp"
-                android:layout_height="70dp"
-                android:background="@drawable/white_smooth_corner"
-                android:layout_gravity="center"
-                android:elevation="69dp">
-
-                <View
-                    android:layout_width="67dp"
-                    android:layout_height="70dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="258dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/smooth_green_sqaure" />
-
-                <TextView
-                    android:layout_width="92dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="137dp"
-                    android:layout_marginBottom="37dp"
-                    android:text="@string/example_task"
-                    android:textAppearance="@style/ui_designer" />
-
-                <TextView
-                    android:layout_width="91dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="91dp"
-                    android:layout_marginEnd="137dp"
-                    android:layout_marginBottom="14dp"
-                    android:alpha="0.5"
-                    android:text="@string/task_type"
-                    android:textAppearance="@style/goode_product" />
-
-                <Button
-                    android:layout_width="65dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="228dp"
-                    android:layout_marginTop="17dp"
-                    android:text="@string/start"
-                    android:textColor="@color/white"
-                    android:textAppearance="@style/smallest" />
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <!-- Add more UI elements here -->

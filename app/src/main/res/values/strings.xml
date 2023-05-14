@@ -46,4 +46,14 @@
     <string name="_0">0</string>
     <string name="quiz_level">Quiz level</string>
     <string name="example_quiz">Example Quiz</string>
+    <string name="quit">Quit</string>
+    <string name="question">Question?</string>
+    <string name="_10">10</string>
+    <string name="task_name">Task name</string>
+    <string name="task_image">Task Image</string>
+    <string name="description">Description</string>
+    <string name="back">Back</string>
+    <string name="already_done">Already Done</string>
+    <string name="level_easy">Level: Easy</string>
+    <string name="add_to_my_task">Add to my task</string>
 </resources>

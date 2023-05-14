@@ -15,4 +15,6 @@
     <color name="kiwi">#9CCD62</color>
     <color name="cream">#F6F8E2</color>
     <color name="lightGray">#E0DDCA</color>
+    <color name="fab_color">#FFFFFF</color> <!-- Example color for the FAB background -->
+    <color name="fab_arrow_color">#488E00</color> <!-- Example color for the FAB arrow -->
 </resources>
