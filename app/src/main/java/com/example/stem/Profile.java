@@ -1,31 +1,32 @@
 package com.example.stem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
+
+    private DatabaseReference userRef;
 
     Button logoutButton, deleteAccount, editProfile;
 
@@ -35,11 +36,66 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        // Initialize Firebase
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
 
         TextView usernameTextView = findViewById(R.id.usernameTextView);
         TextView pointsTextView = findViewById(R.id.profile_stem_points);
-        int points = 10; // Replace with your actual points value
-        pointsTextView.setText(String.valueOf(points));
+        if (currentUser != null) {
+            // Get the reference to the user in the database
+            userRef = databaseReference.child("users").child(currentUser.getUid());
+
+
+        }
+        // Retrieve the user from the database
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                User user = task.getResult().getValue(User.class);
+
+                // Update the points
+                if (user != null) {
+                    int currentPoints = user.getPoints();
+                    user.setPoints(currentPoints);
+
+                    // Update the user in the database
+                    userRef.setValue(user).addOnCompleteListener(updateTask -> {
+                        if (updateTask.isSuccessful()) {
+                            // Points updated successfully
+                            pointsTextView.setText(String.valueOf(currentPoints));
+                        } else {
+                            // Handle update failure
+                            Toast.makeText(this, "update failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }
+            } else {
+                // Handle any errors
+                Exception exception = task.getException();
+
+                if (exception instanceof DatabaseException) {
+                    // Handle database-related errors
+                    String errorMessage = "Database exception: " + exception.getMessage();
+                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                } else if (exception instanceof FirebaseAuthException) {
+                    // Handle authentication-related errors
+                    String errorMessage = "Authentication exception: " + exception.getMessage();
+                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle other types of exceptions
+                    String errorMessage = "Exception: ";
+                    if (exception != null) {
+                        errorMessage += exception.getMessage();
+                    } else {
+                        errorMessage += "Unknown error occurred.";
+                    }
+                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -101,93 +157,65 @@ public class Profile extends AppCompatActivity {
             return false;
         });
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder =  new AlertDialog.Builder(Profile.this);
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_logout, null);
+        logoutButton.setOnClickListener(v -> {
+            AlertDialog.Builder builder =  new AlertDialog.Builder(Profile.this);
+            View dialogView = getLayoutInflater().inflate(R.layout.dialog_logout, null);
 
 
-                builder.setView(dialogView);
-                AlertDialog dialog = builder.create();
+            builder.setView(dialogView);
+            AlertDialog dialog = builder.create();
 
-                dialogView.findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        FirebaseAuth.getInstance().signOut();
-                        // Redirect to the login activity
-                        Intent intent = new Intent(Profile.this, Login.class);
-                        startActivity(intent);
-
-                        // Finish the current activity (optional)
-                        finish();
-                    }
-                });
-                dialogView.findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                if (dialog.getWindow() != null){
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                dialog.show();
-            }
-        });
-        deleteAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Profile.this);
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_delete_account, null);
-
-                builder.setView(dialogView);
-                AlertDialog dialog = builder.create();
-
-                dialogView.findViewById(R.id.btnDeleteAccount).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user !=null){
-                        user.delete()
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            // Account deleted successfully
-                                            Toast.makeText(Profile.this, "Account deleted successfully", Toast.LENGTH_SHORT).show();
-                                            // Redirect to the login screen or perform any other necessary actions
-                                            Intent intent = new Intent(Profile.this, SignUp.class);
-                                            startActivity(intent);
-                                            finish();
-                                        } else {
-                                            // Failed to delete the account
-                                            Toast.makeText(Profile.this, "Failed to delete account.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-                    }
-                    }
-                });
-                dialogView.findViewById(R.id.btnCancelAccount).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                if (dialog.getWindow() !=null){
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                dialog.show();
-            }
-        });
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Profile.this, EditProfile.class);
+            dialogView.findViewById(R.id.btnLogout).setOnClickListener(v1 -> {
+                FirebaseAuth.getInstance().signOut();
+                // Redirect to the login activity
+                Intent intent = new Intent(Profile.this, Login.class);
                 startActivity(intent);
+
+                // Finish the current activity (optional)
+                finish();
+            });
+            dialogView.findViewById(R.id.btnBack).setOnClickListener(v12 -> dialog.dismiss());
+            if (dialog.getWindow() != null){
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
+            dialog.show();
+        });
+        deleteAccount.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Profile.this);
+            View dialogView = getLayoutInflater().inflate(R.layout.dialog_delete_account, null);
+
+            builder.setView(dialogView);
+            AlertDialog dialog = builder.create();
+
+            dialogView.findViewById(R.id.btnDeleteAccount).setOnClickListener(v13 -> {
+            FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+            if (user1 !=null){
+                user1.delete()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()){
+                                // Account deleted successfully
+                                Toast.makeText(Profile.this, "Account deleted successfully", Toast.LENGTH_SHORT).show();
+                                // Redirect to the login screen or perform any other necessary actions
+                                Intent intent = new Intent(Profile.this, SignUp.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                // Failed to delete the account
+                                Toast.makeText(Profile.this, "Failed to delete account.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+            });
+            dialogView.findViewById(R.id.btnCancelAccount).setOnClickListener(v14 -> dialog.dismiss());
+            if (dialog.getWindow() !=null){
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            dialog.show();
+        });
+        editProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(Profile.this, EditProfile.class);
+            startActivity(intent);
         });
 
 

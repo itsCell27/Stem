@@ -1,12 +1,12 @@
 package com.example.stem;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ScrollView;
+import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,7 +23,7 @@ public class Home extends AppCompatActivity {
         viewAll = findViewById(R.id.home_view_all);
         homeToTask2 = findViewById(R.id.stemHomeTask2);
 
-        ScrollView scrollView = findViewById(R.id.scroll_home);
+        HorizontalScrollView scrollView = findViewById(R.id.scroll_home);
         scrollView.scrollTo(0, 0); // scroll to top
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_home);
