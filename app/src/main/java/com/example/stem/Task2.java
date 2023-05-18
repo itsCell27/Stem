@@ -10,13 +10,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Task2 extends AppCompatActivity {
 
     private DatabaseReference userRef;
+    private DatabaseReference lastButtonClickRef;
 
     FloatingActionButton faB2;
 
@@ -37,6 +42,7 @@ public class Task2 extends AppCompatActivity {
 
         if (currentUser != null) {
             // Get the reference to the user in the database
+            lastButtonClickRef = databaseReference.child("users").child(currentUser.getUid()).child("lastButtonClick");
             userRef = databaseReference.child("users").child(currentUser.getUid());
 
             // Set click listener for the button
@@ -48,23 +54,69 @@ public class Task2 extends AppCompatActivity {
         }
     }
     private void addPoints() {
-        if (userRef == null) {
-            return; // User reference is not available, cannot add points
+        if (userRef == null || lastButtonClickRef == null) {
+            return; // User reference or last button click reference is not available
         }
 
-        // Retrieve the user from the database
-        userRef.get().addOnCompleteListener(task -> {
+        // Get the current date
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+        // Retrieve the last button click timestamp from the database
+        lastButtonClickRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                User user = task.getResult().getValue(User.class);
+                DataSnapshot dataSnapshot = task.getResult();
+                Long lastButtonClickTimestamp = dataSnapshot.getValue(Long.class);
 
-                // Update the points
-                if (user != null) {
-                    int currentPoints = user.getPoints();
-                    int newPoints = currentPoints + 20;
-                    user.setPoints(newPoints);
+                // Check if the button can be clicked again
+                if (lastButtonClickTimestamp == null || !isSameDay(currentDate, new Date(lastButtonClickTimestamp))) {
+                    // Update the last button click timestamp in the database
+                    lastButtonClickRef.setValue(currentDate.getTime()).addOnCompleteListener(updateTask -> {
+                        if (updateTask.isSuccessful()) {
+                            // The button can be clicked, proceed with adding points
+                            userRef.child("points").get().addOnCompleteListener(pointsTask -> {
+                                if (pointsTask.isSuccessful()) {
+                                    DataSnapshot pointsSnapshot = pointsTask.getResult();
+                                    Integer currentPoints = pointsSnapshot.getValue(Integer.class);
 
-                    // Update the user in the database
-                    userRef.setValue(user);
+                                    if (currentPoints != null) {
+                                        // Increment the points by 10
+                                        int newPoints = currentPoints + 10;
+
+                                        // Update the points value in the database
+                                        userRef.child("points").setValue(newPoints)
+                                                .addOnCompleteListener(updatePointsTask -> {
+                                                    if (updatePointsTask.isSuccessful()) {
+                                                        // Points updated successfully
+                                                        Toast.makeText(this, "You've earned points", Toast.LENGTH_SHORT).show();
+                                                        // Update the UI or perform any other action
+                                                    } else {
+                                                        // Handle points update failure
+                                                        Toast.makeText(this, "update failed", Toast.LENGTH_SHORT).show();
+                                                        // TODO: Display an error message to the user
+                                                    }
+                                                });
+                                    } else {
+                                        // Handle the case where the points value is null
+                                        Toast.makeText(this, "points value is null", Toast.LENGTH_SHORT).show();
+                                        // TODO: Display an error message or handle it accordingly
+                                    }
+                                } else {
+                                    // Handle points retrieval failure
+                                    Toast.makeText(this, "points retrieval failed", Toast.LENGTH_SHORT).show();
+                                    // TODO: Display an error message to the user
+                                }
+                            });
+                        } else {
+                            // Handle update failure
+                            Toast.makeText(this, "update failed", Toast.LENGTH_SHORT).show();
+                            // TODO: Display an error message to the user
+                        }
+                    });
+                } else {
+                    // The button cannot be clicked again today
+                    Toast.makeText(this, "This task can only be done once a day", Toast.LENGTH_SHORT).show();
+                    // TODO: Display a message to the user or disable the button
                 }
             } else {
                 // Handle any errors
@@ -90,5 +142,17 @@ public class Task2 extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean isSameDay(Date date1, Date date2) {
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTime(date1);
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.setTime(date2);
+
+        return calendar1.get(Calendar.YEAR) == calendar2.get(Calendar.YEAR)
+                && calendar1.get(Calendar.MONTH) == calendar2.get(Calendar.MONTH)
+                && calendar1.get(Calendar.DAY_OF_MONTH) == calendar2.get(Calendar.DAY_OF_MONTH);
     }
 }
