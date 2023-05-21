@@ -56,4 +56,5 @@
     <string name="already_done">Already Done</string>
     <string name="level_easy">Level: Easy</string>
     <string name="add_to_my_task">Add to my task</string>
+    <string name="name_example">Name Example</string>
 </resources>
