@@ -12,12 +12,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class EditProfile extends AppCompatActivity {
+    FloatingActionButton editProfileBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,10 @@ public class EditProfile extends AppCompatActivity {
                 }
             }
         });
+
+        editProfileBack = findViewById(R.id.edit_profile_back_btn);
+
+        editProfileBack.setOnClickListener(v -> onBackPressed());
 
 
     }

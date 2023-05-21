@@ -3,8 +3,8 @@
     <style name="Theme.Stem" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryVariant">@color/white</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/shadyBlack</item>
+        <item name="colorOnPrimary">@color/shadyBlack</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/shadyBlack</item>
         <item name="colorSecondaryVariant">@color/shadyBlack</item>

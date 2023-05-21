@@ -15,8 +15,11 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Calendar;
+
 import java.util.Date;
+
+
+
 
 public class Task1 extends AppCompatActivity {
 
@@ -50,7 +53,7 @@ public class Task1 extends AppCompatActivity {
             Button addPointsButton = findViewById(R.id.btnDone1);
             addPointsButton.setOnClickListener(v -> {
                 addPoints();
-                addPointsButton.setEnabled(false); // Disable the button after it is clicked
+
             });
         }
     }
@@ -61,8 +64,7 @@ public class Task1 extends AppCompatActivity {
         }
 
         // Get the current date
-        Calendar calendar = Calendar.getInstance();
-        Date currentDate = calendar.getTime();
+        Date currentDate = new Date();
 
         // Retrieve the last button click timestamp from the database
         lastButtonClickRef.get().addOnCompleteListener(task -> {
@@ -71,7 +73,7 @@ public class Task1 extends AppCompatActivity {
                 Long lastButtonClickTimestamp = dataSnapshot.getValue(Long.class);
 
                 // Check if the button can be clicked again
-                if (lastButtonClickTimestamp == null || !isSameDay(currentDate, new Date(lastButtonClickTimestamp))) {
+                if (lastButtonClickTimestamp == null || !DateUtils.isSameDay(currentDate, new Date(lastButtonClickTimestamp))) {
                     // Update the last button click timestamp in the database
                     lastButtonClickRef.setValue(currentDate.getTime()).addOnCompleteListener(updateTask -> {
                         if (updateTask.isSuccessful()) {
@@ -90,34 +92,34 @@ public class Task1 extends AppCompatActivity {
                                                 .addOnCompleteListener(updatePointsTask -> {
                                                     if (updatePointsTask.isSuccessful()) {
                                                         // Points updated successfully
-                                                        Toast.makeText(this, "You've earned points", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Task1.this, "You've earned points", Toast.LENGTH_SHORT).show();
                                                         // Update the UI or perform any other action
                                                     } else {
                                                         // Handle points update failure
-                                                        Toast.makeText(this, "update failed", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Task1.this, "Points update failed", Toast.LENGTH_SHORT).show();
                                                         // TODO: Display an error message to the user
                                                     }
                                                 });
                                     } else {
                                         // Handle the case where the points value is null
-                                        Toast.makeText(this, "points value is null", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Task1.this, "Points value is null", Toast.LENGTH_SHORT).show();
                                         // TODO: Display an error message or handle it accordingly
                                     }
                                 } else {
                                     // Handle points retrieval failure
-                                    Toast.makeText(this, "points retrieval failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Task1.this, "Points retrieval failed", Toast.LENGTH_SHORT).show();
                                     // TODO: Display an error message to the user
                                 }
                             });
                         } else {
                             // Handle update failure
-                            Toast.makeText(this, "update failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Task1.this, "Update failed", Toast.LENGTH_SHORT).show();
                             // TODO: Display an error message to the user
                         }
                     });
                 } else {
                     // The button cannot be clicked again today
-                    Toast.makeText(this, "This task can only be done once a day", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Task1.this, "This task can only be done once a day", Toast.LENGTH_SHORT).show();
                     // TODO: Display a message to the user or disable the button
                 }
             } else {
@@ -148,15 +150,5 @@ public class Task1 extends AppCompatActivity {
 
 
 
-    private boolean isSameDay(Date date1, Date date2) {
-        Calendar calendar1 = Calendar.getInstance();
-        calendar1.setTime(date1);
 
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.setTime(date2);
-
-        return calendar1.get(Calendar.YEAR) == calendar2.get(Calendar.YEAR)
-                && calendar1.get(Calendar.MONTH) == calendar2.get(Calendar.MONTH)
-                && calendar1.get(Calendar.DAY_OF_MONTH) == calendar2.get(Calendar.DAY_OF_MONTH);
-    }
 }

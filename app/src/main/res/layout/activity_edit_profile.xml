@@ -7,6 +7,19 @@
     android:background="@color/background"
     tools:context=".EditProfile">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_profile_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        app:backgroundTint="@color/fab_color"
+        app:tint="@color/fab_arrow_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back"/>
+
     <TextView
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -28,10 +41,12 @@
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="116dp"
-        android:hint="@string/enter_your_username"
+        android:hint="@string/username"
+        android:textColor="@color/shadyBlack"
         android:textColorHint="@color/green"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
         android:autofillHints="enter your username" />
 
     <TextView
