@@ -57,4 +57,17 @@
     <string name="level_easy">Level: Easy</string>
     <string name="add_to_my_task">Add to my task</string>
     <string name="name_example">Name Example</string>
+    <string name="rank">Rank</string>
+    <string name="_1">1</string>
+    <string name="user_place">User Place</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_1000">1000</string>
+    <string name="your_place">Your Place</string>
 </resources>

@@ -8,13 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#E6E6E6</color>
-    <color name="lightGreen">#6DD500</color>
+    <color name="lightGreen">#7FF800</color>
     <color name="green">#488E00</color>
     <color name="darkGreen">#244700</color>
     <color name="shadyBlack">#3C3D42</color>
     <color name="kiwi">#9CCD62</color>
     <color name="cream">#F6F8E2</color>
-    <color name="lightGray">#E0DDCA</color>
+    <color name="lightGray">#B7B7B7</color>
     <color name="fab_color">#FFFFFF</color> <!-- Example color for the FAB background -->
     <color name="fab_arrow_color">#488E00</color> <!-- Example color for the FAB arrow -->
 </resources>

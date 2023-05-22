@@ -73,7 +73,7 @@
                     android:layout_marginStart="78dp"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="83dp"
-                    android:text="@string/level"
+                    android:text="@string/rank"
                     android:textSize="14sp"
                     android:textColor="@color/green"
                     android:gravity="top"

@@ -1,10 +1,10 @@
 package com.example.stem;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ScrollView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -17,6 +17,9 @@ public class Leaderboard extends AppCompatActivity {
 
         ScrollView scrollView = findViewById(R.id.scroll_leaderboard);
         scrollView.scrollTo(0, 0); // scroll to top
+
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_leaderboard);
