@@ -23,7 +23,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="229dp">
+                android:layout_height="229dp"
+                android:background="@color/white">
 
                 <TextView
                     android:id="@+id/profile1"
@@ -133,18 +134,27 @@
             </RelativeLayout>
 
 
-            <Space
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="279dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white">
 
-            <TextView
-                android:layout_width="355dp"
-                android:layout_height="match_parent"
-                android:text="@string/settings"
-                android:textColor="@color/green"
-                android:textSize="28sp"
-                android:layout_gravity="center"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/settings"
+                    android:textColor="@color/green"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <Space
                 android:layout_width="match_parent"

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".Home">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/hello_ka_stem"
+        android:textColor="@color/shadyBlack"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <RelativeLayout
         android:id="@+id/text"
