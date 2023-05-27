@@ -71,4 +71,12 @@
     <string name="_1000">1000</string>
     <string name="your_place">Your Place</string>
     <string name="hello_ka_stem">Hello Ka-Stem</string>
+    <string name="progress">Progress</string>
+    <string name="task_achieved">Task Achieved</string>
+    <string name="_36">36</string>
+    <string name="_466">466</string>
+    <string name="stem_points">Stem Points</string>
+    <string name="error_message">Error</string>
+    <string name="na">N/A</string>
+
 </resources>

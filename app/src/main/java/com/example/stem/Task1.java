@@ -111,6 +111,40 @@ public class Task1 extends AppCompatActivity {
                                     // TODO: Display an error message to the user
                                 }
                             });
+                            // add a point to number of task completed
+                            // Increment the task completed points by 1
+                            userRef.child("numberOfTaskCompleted").get().addOnCompleteListener(taskCompletedPointsTask ->{
+                                if (taskCompletedPointsTask.isSuccessful()) {
+                                    DataSnapshot taskCompletedPointsSnapshot = taskCompletedPointsTask.getResult();
+                                    Integer currentTaskCompletedPoints = taskCompletedPointsSnapshot.getValue(Integer.class);
+
+                                    if (currentTaskCompletedPoints !=null) {
+                                        int newTaskCompletedPoints = currentTaskCompletedPoints + 1;
+                                        // Update the task completed points value in the database
+                                        userRef.child("numberOfTaskCompleted").setValue(newTaskCompletedPoints)
+                                                .addOnCompleteListener(updateTaskCompletedPoints -> {
+                                                    if (updateTaskCompletedPoints.isSuccessful()) {
+                                                        // Task completed points updated successfully
+                                                        Toast.makeText(this, "Task completed points incremented", Toast.LENGTH_SHORT).show();
+                                                        // Update the UI or perform any other action
+                                                    } else {
+                                                        // Handle task completed points update failure
+                                                        Toast.makeText(this, "Task completed points update failed", Toast.LENGTH_SHORT).show();
+                                                        // TODO: Display an error message to the user
+                                                    }
+                                                });
+                                    } else {
+                                        // Handle the case where the points value is null
+                                        Toast.makeText(this, "Points retrieval failed", Toast.LENGTH_SHORT).show();
+                                        // TODO: Display an error message or handle it accordingly
+                                    }
+                                } else {
+                                    // Handle points retrieval failure
+                                    Toast.makeText(this, "Points retrieval failed", Toast.LENGTH_SHORT).show();
+                                    // TODO: Display an error message to the user
+                                }
+
+                            });
                         } else {
                             // Handle update failure
                             Toast.makeText(Task1.this, "Update failed", Toast.LENGTH_SHORT).show();

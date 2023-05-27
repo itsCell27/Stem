@@ -6,19 +6,117 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".Home">
-    
+
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/hello_ka_stem"
         android:textColor="@color/shadyBlack"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="324dp"
+        android:layout_height="209dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle_home_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:layout_marginStart="38dp"
+        android:text="@string/progress"
+        android:textColor="@color/shadyBlack"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/white_small_square"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="244dp"
+        android:background="@drawable/white_small_square"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="188dp"
+        android:text="@string/task_achieved"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="256dp"
+        android:text="@string/stem_points"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/home_task_achieved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="68dp"
+        android:text="@string/_0"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/home_stem_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="68dp"
+        android:text="@string/_0"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/text"
@@ -57,8 +155,8 @@
         android:id="@+id/scroll_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout_home"
-        android:scrollbars="horizontal">
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout_home">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -67,32 +165,31 @@
             android:orientation="horizontal">
 
 
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stemHomeTask2"
                 android:layout_width="240dp"
                 android:layout_height="175dp"
-                android:background="@drawable/white_box"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/stemHomeTask2">
+                android:background="@drawable/white_box">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/home_stem_task_image2"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:id="@+id/home_stem_task_image2"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:contentDescription="@string/task_image"
                         android:scaleType="fitXY"
-                        android:src="@drawable/climate_change3"
-                        android:contentDescription="@string/task_image" />
+                        android:src="@drawable/climate_change3" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -105,8 +202,8 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/task_name"
                     android:textColor="@color/green"
-                    android:textStyle="bold"
                     android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/home_stem_task_image2" />
 
@@ -114,13 +211,14 @@
                     android:id="@+id/home_stem_task_level2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
                     android:text="@string/level"
                     android:textColor="@color/shadyBlack"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/home_task_text_name2" />
+
                 <TextView
                     android:id="@+id/stem_task_score2"
                     android:layout_width="wrap_content"
@@ -128,11 +226,11 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:text="@string/_10"
-                    android:textSize="20sp"
                     android:textColor="@color/green"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@id/home_stem_task_image2"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_stem_task_image2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -148,8 +246,8 @@
         android:id="@+id/relativeLayout_home"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:elevation="69dp">
+        android:elevation="69dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- Fragment container to hold the different activities -->
         <FrameLayout
@@ -164,10 +262,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bottom_background"
-            app:menu="@menu/bottom_menu"
             app:itemIconSize="30dp"
             app:itemIconTint="@drawable/item_selector"
-            app:itemRippleColor="@android:color/transparent" />
+            app:itemRippleColor="@android:color/transparent"
+            app:menu="@menu/bottom_menu" />
 
     </RelativeLayout>
 
