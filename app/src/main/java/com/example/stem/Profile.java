@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile extends AppCompatActivity {
 
     private DatabaseReference userRef;
+    private TextView userRank;
 
     Button logoutButton, deleteAccount, editProfile;
 
@@ -34,6 +35,8 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        userRank = findViewById(R.id.profile_rank);
 
         // Initialize Firebase
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -215,6 +218,15 @@ public class Profile extends AppCompatActivity {
         editProfile.setOnClickListener(v -> {
             Intent intent = new Intent(Profile.this, EditProfile.class);
             startActivity(intent);
+        });
+
+        // Call the getRank() method
+        RankingSystem.getRank(new RankingSystem.RankCallback() {
+            @Override
+            public void onRankReceived(String rank) {
+                // Update the TextView with the received rank
+                userRank.setText(rank);
+            }
         });
 
 
