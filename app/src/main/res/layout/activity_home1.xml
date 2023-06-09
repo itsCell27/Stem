@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="44dp"
-        android:fontFamily="@font/montserrat_regular"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/hello_ka_stem"
         android:textColor="@color/shadyBlack"
         android:textSize="22sp"
@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="106dp"
         android:layout_marginStart="38dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/progress"
         android:textColor="@color/shadyBlack"
         android:textSize="20sp"
@@ -134,6 +135,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="top"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/featured_task"
             android:textAppearance="@style/new_task" />
 
@@ -146,6 +148,7 @@
             android:layout_marginStart="268dp"
             android:layout_marginTop="9dp"
             android:gravity="top"
+            android:fontFamily="@font/poppins_regular"
             android:text="@string/view_all"
             android:textAppearance="@style/view_all" />
 

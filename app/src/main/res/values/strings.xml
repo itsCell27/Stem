@@ -78,5 +78,7 @@
     <string name="stem_points">Stem Points</string>
     <string name="error_message">Error</string>
     <string name="na">N/A</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
 
 </resources>

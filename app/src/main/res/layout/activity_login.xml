@@ -7,6 +7,17 @@
     android:background="@color/background"
     tools:context=".Login">
 
+    <ImageView
+        android:layout_width="211dp"
+        android:layout_height="186dp"
+        android:layout_marginBottom="128dp"
+        android:src="@drawable/green_earth_logo_nobg"
+        app:layout_constraintBottom_toTopOf="@+id/login_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/welcome_back"
         android:layout_width="wrap_content"
@@ -17,10 +28,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.369" />
 
     <EditText
         android:id="@+id/login_email"
@@ -28,7 +38,8 @@
         android:layout_height="48dp"
         android:autofillHints="email"
         android:background="@drawable/round_corners"
-        android:hint="@string/email"
+        android:hint="@string/enter_your_email"
+        android:textSize="14sp"
         android:padding="15dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -45,7 +56,8 @@
         android:layout_height="48dp"
         android:autofillHints="email"
         android:background="@drawable/round_corners"
-        android:hint="@string/password"
+        android:hint="@string/enter_your_password"
+        android:textSize="14sp"
         android:padding="15dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"

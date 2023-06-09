@@ -7,6 +7,16 @@
     android:background="@color/background"
     tools:context=".Start">
 
+    <ImageView
+        android:layout_width="211dp"
+        android:layout_height="186dp"
+        android:src="@drawable/green_earth_logo_nobg"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.895" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
