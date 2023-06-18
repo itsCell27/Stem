@@ -11,8 +11,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -105,8 +107,25 @@ public class Home extends AppCompatActivity {
                 } else {
                     // Handle any errors
                     Exception exception = task.getException();
-                    homeStemPoints.setText(getString(R.string.error_message));
-                    homeNumberOfTaskCompleted.setText(getString(R.string.error_message));
+
+                    if (exception instanceof DatabaseException) {
+                        // Handle database-related errors
+                        String errorMessage = "Database exception: " + exception.getMessage();
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                    } else if (exception instanceof FirebaseAuthException) {
+                        // Handle authentication-related errors
+                        String errorMessage = "Authentication exception: " + exception.getMessage();
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Handle other types of exceptions
+                        String errorMessage = "Exception: ";
+                        if (exception != null) {
+                            errorMessage += exception.getMessage();
+                        } else {
+                            errorMessage += "Unknown error occurred.";
+                        }
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         } else {

@@ -28,6 +28,8 @@ public class Profile extends AppCompatActivity {
 
     private DatabaseReference userRef;
     private TextView userRank;
+    private TextView profileStemPoints;
+    private TextView profileNumberOfTaskCompleted;
 
     Button logoutButton, deleteAccount, editProfile;
 
@@ -37,67 +39,73 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         userRank = findViewById(R.id.profile_rank);
+        profileStemPoints = findViewById(R.id.profile_stem_points);
+        profileNumberOfTaskCompleted = findViewById(R.id.profile_task_achieved);
 
         // Initialize Firebase
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference();
+
 
         TextView usernameTextView = findViewById(R.id.usernameTextView);
-        TextView pointsTextView = findViewById(R.id.profile_stem_points);
+
         if (currentUser != null) {
-            // Get the reference to the user in the database
-            userRef = databaseReference.child("users").child(currentUser.getUid());
+            String userId = currentUser.getUid();
 
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = firebaseDatabase.getReference().child("users").child(userId);
 
-        }
-        // Retrieve the user from the database
-        userRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                User user = task.getResult().getValue(User.class);
+            // Rest of the code to retrieve and display user data
+            // ...
+            // Retrieve the user data from the database
+            databaseReference.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DataSnapshot dataSnapshot = task.getResult();
+                    if (dataSnapshot.exists()) {
+                        User user = dataSnapshot.getValue(User.class);
 
-                // Update the points
-                if (user != null) {
-                    int currentPoints = user.getPoints();
-                    user.setPoints(currentPoints);
+                        // Update the points and numberOfTaskCompleted
+                        if (user != null) {
+                            int points = user.getPoints();
+                            int numberOfTaskCompleted = user.getNumberOfTaskCompleted();
 
-                    // Update the user in the database
-                    userRef.setValue(user).addOnCompleteListener(updateTask -> {
-                        if (updateTask.isSuccessful()) {
-                            // Points updated successfully
-                            pointsTextView.setText(String.valueOf(currentPoints));
-                        } else {
-                            // Handle update failure
-                            Toast.makeText(this, "update failed", Toast.LENGTH_SHORT).show();
-
+                            // Display the points and numberOfTaskCompleted in TextViews
+                            profileStemPoints.setText(String.valueOf(points));
+                            profileNumberOfTaskCompleted.setText(String.valueOf(numberOfTaskCompleted));
                         }
-                    });
-                }
-            } else {
-                // Handle any errors
-                Exception exception = task.getException();
-
-                if (exception instanceof DatabaseException) {
-                    // Handle database-related errors
-                    String errorMessage = "Database exception: " + exception.getMessage();
-                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                } else if (exception instanceof FirebaseAuthException) {
-                    // Handle authentication-related errors
-                    String errorMessage = "Authentication exception: " + exception.getMessage();
-                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                } else {
-                    // Handle other types of exceptions
-                    String errorMessage = "Exception: ";
-                    if (exception != null) {
-                        errorMessage += exception.getMessage();
                     } else {
-                        errorMessage += "Unknown error occurred.";
+                        // Handle case when the user data does not exist
+                        profileStemPoints.setText("N/A");
+                        profileNumberOfTaskCompleted.setText("N/A");
                     }
-                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle any errors
+                    Exception exception = task.getException();
+
+                    if (exception instanceof DatabaseException) {
+                        // Handle database-related errors
+                        String errorMessage = "Database exception: " + exception.getMessage();
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                    } else if (exception instanceof FirebaseAuthException) {
+                        // Handle authentication-related errors
+                        String errorMessage = "Authentication exception: " + exception.getMessage();
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Handle other types of exceptions
+                        String errorMessage = "Exception: ";
+                        if (exception != null) {
+                            errorMessage += exception.getMessage();
+                        } else {
+                            errorMessage += "Unknown error occurred.";
+                        }
+                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            // Handle the case when the user is not logged in
+            Toast.makeText(this, "user not login", Toast.LENGTH_SHORT).show();
+        }
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -221,12 +229,9 @@ public class Profile extends AppCompatActivity {
         });
 
         // Call the getRank() method
-        RankingSystem.getRank(new RankingSystem.RankCallback() {
-            @Override
-            public void onRankReceived(String rank) {
-                // Update the TextView with the received rank
-                userRank.setText(rank);
-            }
+        RankingSystem.getRank(rank -> {
+            // Update the TextView with the received rank
+            userRank.setText(rank);
         });
 
 

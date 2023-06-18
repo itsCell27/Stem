@@ -22,9 +22,10 @@
 
 
             <RelativeLayout
+                android:id="@+id/profile_top_bar"
                 android:layout_width="match_parent"
-                android:layout_height="229dp"
-                android:background="@color/white">
+                android:layout_height="130dp"
+                android:background="@drawable/top_white_background">
 
                 <TextView
                     android:id="@+id/profile1"
@@ -60,7 +61,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="58dp"
                     android:text="@string/username"
-                    android:textColor="@color/green"
+                    android:textColor="@color/shadyBlack"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:gravity="top"
@@ -94,44 +95,113 @@
 
                 <TextView
                     android:id="@+id/text_edit_profile"
-                    android:layout_width="59dp"
-                    android:layout_height="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="270dp"
-                    android:layout_marginTop="67dp"
+                    android:layout_marginStart="265dp"
+                    android:layout_marginTop="64dp"
                     android:elevation="10dp"
                     android:gravity="top"
                     android:text="@string/edit_profile"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
+
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="19dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="30dp"
+                    android:text="@string/progress"
+                    android:textSize="24sp"
+                    android:textColor="@color/shadyBlack"
+                    android:fontFamily="@font/poppins_medium"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="319dp"
+                android:layout_height="204dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_home_green">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_small_square"
+                    android:elevation="10dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="140dp"
-                    android:gravity="top"
-                    android:text="@string/my_stem_points"
-                    android:textColor="@color/green"
-                    android:textSize="16sp" />
-
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_small_square"
+                    android:elevation="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="90dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="90dp"
+                    android:text="@string/task_achieved"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:elevation="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:id="@+id/profile_task_achieved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="250dp"
+                    android:text="@string/_0"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:elevation="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginStart="90dp"
+                    android:text="@string/stem_points"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:elevation="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
                 <TextView
                     android:id="@+id/profile_stem_points"
-                    android:layout_width="132dp"
-                    android:layout_height="49dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="153dp"
-                    android:layout_marginTop="117dp"
-                    android:gravity="top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginStart="250dp"
                     android:text="@string/_0"
-                    android:textColor="@color/green"
-                    android:textSize="42sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:elevation="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

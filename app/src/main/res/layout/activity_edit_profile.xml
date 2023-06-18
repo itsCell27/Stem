@@ -7,31 +7,41 @@
     android:background="@color/background"
     tools:context=".EditProfile">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/top_green_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/edit_profile_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
+        android:contentDescription="@string/back"
         android:src="@drawable/baseline_arrow_back_ios_24"
         app:backgroundTint="@color/fab_color"
-        app:tint="@color/fab_arrow_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/back"/>
+        app:tint="@color/fab_arrow_color" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="110dp"
         android:gravity="top"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/edit_profile"
-        android:textColor="@color/shadyBlack"
+        android:textColor="@color/white"
         android:textSize="28sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,21 +49,22 @@
         android:id="@+id/newUsernameEditText"
         android:layout_width="331dp"
         android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="250dp"
+        android:autofillHints="enter your username"
         android:hint="@string/username"
+        android:inputType="text"
         android:textColor="@color/shadyBlack"
         android:textColorHint="@color/shadyBlack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:inputType="text"
-        android:autofillHints="enter your username" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="331dp"
         android:layout_height="30dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="76dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/enter_your_username"
         android:textColor="@color/shadyBlack"
         android:textSize="18sp"

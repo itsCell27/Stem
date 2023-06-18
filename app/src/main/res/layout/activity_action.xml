@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginStart="40dp"
         android:text="@string/stem_task"
-        android:textColor="@color/green"
+        android:textColor="@color/shadyBlack"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
