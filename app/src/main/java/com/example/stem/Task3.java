@@ -1,6 +1,5 @@
 package com.example.stem;
 
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -19,16 +18,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
-public class Task2 extends AppCompatActivity {
+public class Task3 extends AppCompatActivity {
 
     private DatabaseReference userRef;
     private DatabaseReference lastButtonClickRef;
-    FloatingActionButton faB2;
+    FloatingActionButton faB3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task2);
+        setContentView(R.layout.activity_task3);
 
         // Initialize Firebase
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -36,12 +35,12 @@ public class Task2 extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-        ScrollView scrollTask2 = findViewById(R.id.scrollViewTask2);
-        scrollTask2.scrollTo(0, 0); //scroll to top
+        ScrollView scrollTask3 = findViewById(R.id.scrollViewTask3);
+        scrollTask3.scrollTo(0, 0); //scroll to top
 
-        faB2 = findViewById(R.id.fab2);
+        faB3 = findViewById(R.id.fab3);
 
-        faB2.setOnClickListener(v -> onBackPressed());
+        faB3.setOnClickListener(v -> onBackPressed());
 
         if (currentUser != null) {
             // Get the reference to the user in the database
@@ -49,7 +48,7 @@ public class Task2 extends AppCompatActivity {
             userRef = databaseReference.child("users").child(currentUser.getUid());
 
             // Set click listener for the button
-            Button addPointsButton = findViewById(R.id.btnDone2);
+            Button addPointsButton = findViewById(R.id.btnDone3);
             addPointsButton.setOnClickListener(v -> {
                 addPoints();
             });
@@ -83,29 +82,29 @@ public class Task2 extends AppCompatActivity {
 
                                     if (currentPoints != null) {
                                         // Increment the points by 10
-                                        int newPoints = currentPoints + 80;
+                                        int newPoints = currentPoints + 250;
 
                                         // Update the points value in the database
                                         userRef.child("points").setValue(newPoints)
                                                 .addOnCompleteListener(updatePointsTask -> {
                                                     if (updatePointsTask.isSuccessful()) {
                                                         // Points updated successfully
-                                                        Toast.makeText(Task2.this, "You've earned points", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Task3.this, "You've earned points", Toast.LENGTH_SHORT).show();
                                                         // Update the UI or perform any other action
                                                     } else {
                                                         // Handle points update failure
-                                                        Toast.makeText(Task2.this, "Points update failed", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Task3.this, "Points update failed", Toast.LENGTH_SHORT).show();
                                                         // TODO: Display an error message to the user
                                                     }
                                                 });
                                     } else {
                                         // Handle the case where the points value is null
-                                        Toast.makeText(Task2.this, "Points value is null", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Task3.this, "Points value is null", Toast.LENGTH_SHORT).show();
                                         // TODO: Display an error message or handle it accordingly
                                     }
                                 } else {
                                     // Handle points retrieval failure
-                                    Toast.makeText(Task2.this, "Points retrieval failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Task3.this, "Points retrieval failed", Toast.LENGTH_SHORT).show();
                                     // TODO: Display an error message to the user
                                 }
                             });
@@ -145,13 +144,13 @@ public class Task2 extends AppCompatActivity {
                             });
                         } else {
                             // Handle update failure
-                            Toast.makeText(Task2.this, "Update failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Task3.this, "Update failed", Toast.LENGTH_SHORT).show();
                             // TODO: Display an error message to the user
                         }
                     });
                 } else {
                     // The button cannot be clicked again this week
-                    Toast.makeText(Task2.this, "This task can only be done once a week", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Task3.this, "This task can only be done once a week", Toast.LENGTH_SHORT).show();
                     // TODO: Display a message to the user or disable the button
                 }
             } else {

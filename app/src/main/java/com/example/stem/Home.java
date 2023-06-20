@@ -22,7 +22,7 @@ public class Home extends AppCompatActivity {
     private DatabaseReference userRef;
     private TextView homeStemPoints;
     private TextView homeNumberOfTaskCompleted;
-    ConstraintLayout homeToTask2;
+    ConstraintLayout homeToTask1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity {
 
 
         TextView viewAll = findViewById(R.id.home_view_all);
-        homeToTask2 = findViewById(R.id.stemHomeTask2);
+        homeToTask1 = findViewById(R.id.stemHomeTask1);
         homeStemPoints = findViewById(R.id.home_stem_points);
         homeNumberOfTaskCompleted = findViewById(R.id.home_task_achieved);
 
@@ -71,8 +71,8 @@ public class Home extends AppCompatActivity {
             Intent intent = new Intent(Home.this, Action.class);
             startActivity(intent);
         });
-        homeToTask2.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, Task2.class);
+        homeToTask1.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, Task1.class);
             startActivity(intent);
         });
         if (currentUser != null) {

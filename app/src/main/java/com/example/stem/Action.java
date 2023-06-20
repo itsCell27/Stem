@@ -12,7 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Action extends AppCompatActivity {
 
-    private ConstraintLayout layoutTask1, layoutTask2;
+    private ConstraintLayout layoutTask1;
+    private ConstraintLayout layoutTask2;
+    private ConstraintLayout layoutTask3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,7 @@ public class Action extends AppCompatActivity {
 
         layoutTask1 = findViewById(R.id.stemActionTask1);
         layoutTask2 = findViewById(R.id.stemActionTask2);
+        layoutTask3 = findViewById(R.id.stemActionTask3);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_actions);
@@ -54,6 +57,10 @@ public class Action extends AppCompatActivity {
         });
         layoutTask2.setOnClickListener(v -> {
             Intent intent = new Intent(Action.this, Task2.class);
+            startActivity(intent);
+        });
+        layoutTask3.setOnClickListener(v -> {
+            Intent intent = new Intent(Action.this, Task3.class);
             startActivity(intent);
         });
 

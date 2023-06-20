@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Task3"
+    android:background="@color/background">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        app:backgroundTint="@color/fab_color"
+        app:tint="@color/fab_arrow_color"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back" />
+
+    <ScrollView
+        android:id="@+id/scrollViewTask3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="340dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/taskImage3"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTaskName3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@null"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cleaning" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textTaskName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginStart="15dp"
+                    android:text="Cleaning"
+                    android:textColor="@color/shadyBlack"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                <TextView
+                    android:id="@+id/taskLevel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/level_average"
+                    android:textColor="@color/shadyBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/taskImage3" />
+                <TextView
+                    android:id="@+id/taskScore3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="40dp"
+                    android:text="@string/_250"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    app:layout_constraintTop_toBottomOf="@+id/taskImage3"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <Button
+                    android:id="@+id/btnAddTask3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="50dp"
+                    android:drawableEnd="@drawable/baseline_edit_note_24"
+                    android:text="@string/add_to_my_task"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/taskImage3" />
+
+                <Button
+                    android:id="@+id/btnDone3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="25dp"
+                    android:drawableEnd="@drawable/baseline_check_circle_24"
+                    android:text="@string/already_done"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnAddTask3" />
+
+                <TextView
+                    android:id="@+id/description3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/description"
+                    android:textColor="@color/shadyBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDone3" />
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:contentDescription="@null"
+                    android:text="Environmental preservation: Cleaning outside helps maintain the cleanliness and beauty of our surroundings. It prevents litter and pollutants from accumulating in public spaces, which can harm wildlife, ecosystems, and water bodies. By removing trash and debris, we contribute to the preservation of a clean and healthy environment.
+
+2. Improving aesthetics and livability: Clean outdoor spaces enhance the overall aesthetics of communities. When public areas are clean and well-maintained, they become more inviting and enjoyable for residents and visitors alike. This can contribute to a higher quality of life, increased community pride, and a sense of belonging.
+
+3. Promoting health and safety: Regular cleaning outside can help prevent health hazards. Removing trash and debris reduces the risk of accidents, such as trips and falls. It also minimizes the presence of pests, vermin, and disease vectors that thrive in unsanitary conditions. Clean environments support the well-being and safety of individuals using these spaces.
+
+4. Encouraging responsible behavior: Cleaning outside sends a positive message about the importance of environmental stewardship and responsible behavior. When people see clean and well-maintained public spaces, they are more likely to adopt similar habits and be conscious of their own waste disposal practices. It promotes a culture of cleanliness and encourages others to respect and care for the environment.
+
+5. Preserving natural habitats: Cleaning up natural areas, such as beaches, forests, and rivers, helps preserve their ecological integrity. Removing trash and debris reduces the risk of pollution, which can harm wildlife, disrupt ecosystems, and degrade natural habitats. Clean natural areas provide a healthier environment for plants, animals, and aquatic life.
+
+6. Community engagement and cohesion: Cleaning outside can be a communal activity that brings people together. Organizing cleanup events or joining community initiatives fosters social interaction, cooperation, and a sense of unity among participants. It strengthens community bonds and promotes a shared responsibility for the environment.
+
+7. Educational opportunities: Cleaning outside can serve as an educational tool to raise awareness about waste management, environmental protection, and the impact of littering. It offers opportunities to engage individuals, particularly children and youth, in discussions and activities that promote responsible waste disposal practices and sustainable behaviors.
+
+Overall, cleaning outside contributes to a cleaner, healthier, and more sustainable environment. It improves the well-being of individuals and communities, fosters environmental awareness, and supports the preservation of natural resources and ecosystems.
+
+Notes and direction
+
+Cleaning outside can involve various tasks depending on the specific area you want to clean. Here are some general steps and tips for cleaning outside:
+
+
+2. Gather cleaning supplies: Collect the necessary cleaning supplies, such as trash bags, gloves, brooms, rakes, dustpans, and cleaning solutions. Consider using eco-friendly or biodegradable cleaning products to minimize environmental impact.
+
+3. Remove trash and debris: Start by picking up visible trash, litter, and debris. Use gloves and trash bags to collect and dispose of the waste properly. Separate recyclable materials from general waste if possible.
+
+4. Sweep and rake: Use a broom or rake to remove leaves, dirt, and other loose debris from sidewalks, paths, and outdoor surfaces. Gather the debris into piles for easier collection and disposal.
+
+5. Clean outdoor furniture and fixtures: If you have outdoor furniture or fixtures, clean them using appropriate cleaning solutions and tools. For example, use a mild soap and water solution to clean plastic or metal furniture, and rinse thoroughly. Scrub off any stubborn stains or grime. For wooden furniture, follow manufacturer recommendations for cleaning and maintenance.
+
+6. Pressure washing (if necessary): In cases where outdoor surfaces, such as driveways, patios, or decks, are heavily soiled or stained, you may consider using a pressure washer. Follow the manufacturer's instructions and safety guidelines when using a pressure washer. Be mindful of water conservation and avoid excessive use.
+
+7. Clean outdoor structures: If there are structures like fences, walls, or play equipment, inspect them for dirt, mold, or stains. Use appropriate cleaning solutions and tools to clean and remove any buildup or discoloration.
+
+8. Pay attention to outdoor drains and gutters: Clear any debris, leaves, or clogs from outdoor drains and gutters to ensure proper water flow and prevent flooding or damage. Use gloves and a scoop or brush to remove the debris.
+
+9. Dispose of waste properly: Ensure that the collected waste, including trash bags, is disposed of properly. Separate recyclables from general waste and dispose of them in designated recycling bins. If organizing a community cleanup, coordinate with local waste management services for proper disposal options.
+
+10. Maintain cleanliness: Encourage regular cleaning and maintenance of outdoor spaces to prevent the buildup of litter and debris. Implement waste management practices, such as providing designated trash bins and signage to promote responsible disposal.
+
+Remember to prioritize safety when cleaning outside, especially when dealing with potential hazards or heavy equipment. Engaging volunteers or organizing community cleanup events can make the task more efficient and enjoyable while fostering a sense of shared responsibility for a cleaner environment.
+"
+                    android:textColor="@color/shadyBlack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/description3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Space
+                android:layout_width="380dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

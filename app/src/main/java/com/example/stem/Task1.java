@@ -2,6 +2,7 @@ package com.example.stem;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,9 @@ public class Task1 extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+        ScrollView scrollTask1 = findViewById(R.id.scrollViewTask1);
+        scrollTask1.scrollTo(0, 0); //scroll to top
 
 
 
@@ -85,7 +89,7 @@ public class Task1 extends AppCompatActivity {
 
                                     if (currentPoints != null) {
                                         // Increment the points by 10
-                                        int newPoints = currentPoints + 10;
+                                        int newPoints = currentPoints + 50;
 
                                         // Update the points value in the database
                                         userRef.child("points").setValue(newPoints)

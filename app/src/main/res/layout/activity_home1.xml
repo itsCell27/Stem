@@ -23,7 +23,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="309dp"
-        android:layout_height="204dp"
+        android:layout_height="190dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
@@ -178,16 +178,16 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/stemHomeTask2"
+                android:id="@+id/stemHomeTask1"
                 android:layout_width="240dp"
                 android:layout_height="175dp"
                 android:layout_marginStart="35dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/white_box">
 
                 <androidx.cardview.widget.CardView
@@ -206,7 +206,7 @@
                         android:layout_height="match_parent"
                         android:contentDescription="@string/task_image"
                         android:scaleType="fitXY"
-                        android:src="@drawable/climate_change3" />
+                        android:src="@drawable/waterplant" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -217,7 +217,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="@string/task_name"
+                    android:text="Water a plant"
                     android:textColor="@color/green"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -230,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="2dp"
-                    android:text="@string/level"
+                    android:text="@string/easy"
                     android:textColor="@color/shadyBlack"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/_10"
+                    android:text="@string/_50"
                     android:textColor="@color/green"
                     android:textSize="20sp"
                     android:textStyle="bold"

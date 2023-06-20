@@ -45,6 +45,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="340dp"
                     android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/taskImage1"
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/climate_change2"
+                        android:src="@drawable/waterplant"
                         android:contentDescription="@null" />
                 </androidx.cardview.widget.CardView>
 
@@ -66,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="90dp"
                     android:layout_marginStart="15dp"
-                    android:text="@string/task_name"
+                    android:text="Water a plant"
                     android:textColor="@color/shadyBlack"
                     android:textSize="30sp"
                     android:textStyle="bold"
@@ -95,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="40dp"
-                    android:text="@string/_10"
+                    android:text="@string/_50"
                     android:textSize="26sp"
                     android:textStyle="bold"
                     android:textColor="@color/green"
@@ -141,17 +142,31 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnDone1" />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="15dp"
-                    android:text="Type the task description here"
+                    android:layout_marginEnd="15dp"
                     android:textColor="@color/shadyBlack"
+                    android:text="Check the soil: Before watering, check the moisture level of the soil by sticking your finger about an inch into the soil. If it feels dry, it\'s time to water the plant.
+Choose the right water: Use room temperature water to avoid shocking the plant\'s roots. If possible, use filtered water or allow tap water to sit for a day to allow chlorine to dissipate.
+Watering technique: Water the plant slowly and evenly, ensuring that the water reaches the root zone. Avoid splashing water on the leaves, as it can lead to fungal diseases. Water until you see it draining from the bottom of the pot.
+Frequency of watering: The frequency of watering depends on factors such as plant type, size, and environmental conditions. Generally, it\'s better to underwater than overwater, as overwatering can lead to root rot. Observe the plant and adjust the watering schedule accordingly.
+Consider the plant's needs: Some plants prefer to dry out between watering, while others like consistently moist soil. Research the specific plant's watering requirements for optimal care.
+Proper drainage: Ensure that the plant container has drainage holes to allow excess
+water to escape. Standing water can lead to root rot.
+Humidity and misting: Some plants benefit from increased humidity. If your plant requires higher humidity levels, you can mist the leaves with water occasionally or use a humidifier nearby."
                     app:layout_constraintTop_toBottomOf="@+id/description1"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:contentDescription="@null"/>
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <Space
+                android:layout_width="380dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 

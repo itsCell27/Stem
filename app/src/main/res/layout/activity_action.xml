@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/climate_change2"
+                        android:src="@drawable/waterplant"
                         android:contentDescription="@string/task_image" />
 
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="@string/task_name"
+                    android:text="Water a plant"
                     android:textColor="@color/green"
                     android:textStyle="bold"
                     android:textSize="16sp"
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"
-                    android:text="@string/level"
+                    android:text="@string/easy"
                     android:textColor="@color/shadyBlack"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/_10"
+                    android:text="@string/_50"
                     android:textSize="20sp"
                     android:textColor="@color/green"
                     android:textStyle="bold"
@@ -127,7 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/climate_change3"
+                        android:src="@drawable/walkorrunning"
                         android:contentDescription="@string/task_image" />
 
 
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="@string/task_name"
+                    android:text="Walk or ride a bike"
                     android:textColor="@color/green"
                     android:textStyle="bold"
                     android:textSize="16sp"
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"
-                    android:text="@string/level"
+                    android:text="@string/average"
                     android:textColor="@color/shadyBlack"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/_10"
+                    android:text="@string/_80"
                     android:textSize="20sp"
                     android:textColor="@color/green"
                     android:textStyle="bold"
@@ -171,6 +171,75 @@
                     app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="240dp"
+                android:layout_height="175dp"
+                android:background="@drawable/white_box"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/stemActionTask3">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:id="@+id/stem_task_image3"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cleaning"
+                        android:contentDescription="@string/task_image" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/task_text_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Cleaning"
+                    android:textColor="@color/green"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/stem_task_image3" />
+
+                <TextView
+                    android:id="@+id/stem_task_level3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/average"
+                    android:textColor="@color/shadyBlack"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/task_text_name3" />
+                <TextView
+                    android:id="@+id/stem_task_score3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/_250"
+                    android:textSize="20sp"
+                    android:textColor="@color/green"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/stem_task_image3"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Space
+                android:layout_width="100dp"
+                android:layout_height="match_parent"/>
         </LinearLayout>
 
 
